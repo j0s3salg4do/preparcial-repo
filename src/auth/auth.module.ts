@@ -10,9 +10,12 @@ import { UsersModule } from '../users/users.module';
   imports: [
     UsersModule,
     PassportModule,
+    
     JwtModule.register({
-      secret: 'super-secret-key',
-      signOptions: { expiresIn: '1h' },
+      secret: process.env.JWT_SECRET ?? 'super-secret-key',
+      signOptions: {
+        expiresIn: Number(process.env.JWT_EXPIRES_IN) || 120,
+      },
     }),
   ],
   providers: [AuthService, JwtStrategy],

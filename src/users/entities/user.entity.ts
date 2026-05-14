@@ -22,7 +22,7 @@ export class User {
   @Column()
   name?: string; // [cite: 22]
 
-  @Column()
+  @Column({ nullable: true})
   phone?: string;
 
   @Column({ default: true })
