@@ -1,4 +1,4 @@
-CREATE TYPE appointment_status AS ENUM ('pending', 'done', 'cancelled');
+CREATE TYPE appointment_status AS ENUM ('pending', 'done');
 
 CREATE TABLE appointments (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
