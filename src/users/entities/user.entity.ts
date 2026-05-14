@@ -11,25 +11,25 @@ import { Role } from '../../roles/entities/role.entity';
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  id?: string; // [cite: 19]
+  id?: string; 
 
   @Column({ unique: true })
-  email?: string; // [cite: 20]
+  email?: string; 
 
-  @Column({ select: false }) // Importante: No devolver password en respuestas
-  password!: string; // [cite: 21]
+  @Column({ select: false }) 
+  password!: string; 
 
   @Column()
-  name?: string; // [cite: 22]
+  name?: string; 
 
   @Column({ nullable: true})
   phone?: string;
 
   @Column({ default: true })
-  is_active?: boolean; // [cite: 24]
+  is_active?: boolean; 
 
   @CreateDateColumn()
-  created_at?: Date; // [cite: 25]
+  created_at?: Date; 
 
   // Relación Many-to-Many
   @ManyToMany(() => Role, (role) => role.users)

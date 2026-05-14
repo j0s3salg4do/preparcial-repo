@@ -8,8 +8,10 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { RolesModule } from './roles/roles.module';
 import { UsersModule } from './users/users.module';
+import { AppointmentsModule } from './appointments/appointments.module';
 
 import { User } from './users/entities/user.entity';
+import {Appointment } from './appointments/entities/appointment.entity';
 import { Role } from './roles/entities/role.entity';
 
 @Module({
