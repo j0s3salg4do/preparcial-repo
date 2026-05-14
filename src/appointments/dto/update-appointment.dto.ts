@@ -3,14 +3,14 @@ import { AppointmentStatus } from '../entities/appointment.entity';
 
 export class UpdateAppointmentDto {
   @IsOptional()
-  @IsDateString()
+  @IsDateString() //Verifica que nuestras appointments tengan una fecha de creacion dada
   datetime?: string;
 
   @IsOptional()
-  @IsString()
+  @IsString() //Comprobamos que la rason de la cita sea un string
   reason?: string;
 
-  @IsOptional()
+  @IsOptional() //Comprobamos que el estado de la cita sea un enum valido dentro de Appointment status
   @IsEnum(AppointmentStatus)
   status?: AppointmentStatus;
 }

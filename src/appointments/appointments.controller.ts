@@ -20,24 +20,19 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 export class AppointmentsController {
   constructor(private readonly appointmentsService: AppointmentsService) {}
 
-  @Post()
+  @Post() // Creacion de un appointment, un paciente puede crear una cita con un medico, una fecha una hora y un motivo
   create(@Body() dto: CreateAppointmentDto, @Req() req) {
     return this.appointmentsService.create(dto, req.user);
   }
 
-  @Get()
+  @Get() // Listado de citas "Pacientes ven solo sus citas, doctores ven solo las suyas, admin ve todas"
   findAll(@Req() req) {
     return this.appointmentsService.findAll(req.user);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string, @Req() req) {
-    return this.appointmentsService.findOne(id, req.user);
-  }
-
   @Patch(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: string, // Actualizacion de datos de una cita "Solo la puede hacer el doctor"
     @Body() dto: UpdateAppointmentDto,
     @Req() req,
   ) {
@@ -45,7 +40,7 @@ export class AppointmentsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string, @Req() req) {
+  remove(@Param('id') id: string, @Req() req) { //Borrado de una cita "Solo el paciente o admin pueden eliminar una cita"
     return this.appointmentsService.remove(id, req.user);
   }
 }
