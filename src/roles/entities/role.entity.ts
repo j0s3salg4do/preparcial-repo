@@ -4,18 +4,17 @@ import { User } from '../../users/entities/user.entity';
 @Entity('roles')
 export class Role {
   @PrimaryGeneratedColumn('uuid')
-  id?: string; // [cite: 27, 30]
+  id?: string; 
 
   @Column({ unique: true })
-  role_name?: string; // [cite: 28, 31]
+  role_name?: string; 
 
   @Column({ nullable: true })
-  description?: string; // [cite: 32, 34]
+  description?: string; 
 
   @CreateDateColumn()
-  created_at!: Date;
+  created_at?: Date;
 
-  // Relación inversa: Un rol puede estar en muchos usuarios
   @ManyToMany(() => User, (user) => user.roles)
   users?: User[];
 }
